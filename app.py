@@ -11,20 +11,24 @@ def index():
 
     if request.method == 'POST':
 
+        #requisição do valoe preenchido no formulario
         cnpj = request.form.get('cnpj')
 
+        #excluir carcteres especificos para url dinamica
         cnpj = cnpj.replace('.', '').replace('/', '').replace('-', '')
 
+        #url dinamica para consulta no banco de dados da api
         url = f'https://brasilapi.com.br/api/cnpj/v1/{cnpj}'
 
         try:
-
+            
+            #requisição dos dados da api
             response = requests.get(url)
 
             if response.status_code != 200:
                 erro = 'CNPJ não encontrado'
             else:
-
+                #converte retorno da api em dicionario python
                 dados = response.json()
 
                 empresa = {
