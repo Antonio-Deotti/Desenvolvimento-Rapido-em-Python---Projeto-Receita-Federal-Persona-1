@@ -17,7 +17,7 @@ def index():
 
     empresa = None
     erro = None
-    historico = []
+    historico2 = []
 
     if request.method == 'POST':
 
@@ -35,7 +35,7 @@ def index():
                 'index.html',
                 empresa=empresa,
                 erro=erro,
-                historico=historico
+                historico2=historico2
             )
 
         # divisão cnpj
@@ -100,7 +100,7 @@ def index():
                 }
 
                 insert_historico = """
-                    INSERT INTO historico (
+                    INSERT INTO historico2 (
                         cnpj_basico,
                         cnpj_ordem,
                         cnpj_dv,
@@ -127,12 +127,12 @@ def index():
                         cnpj_ordem,
                         cnpj_dv,
                         nome_fantasia
-                    FROM historico
-                    ORDER BY cnpj_basico DESC
+                    FROM historico2
+                    ORDER BY id_historico DESC
                     LIMIT 10
                 """)
 
-                historico = cursor.fetchall()
+                historico2 = cursor.fetchall()
 
             else:
                 erro = 'CNPJ não encontrado'
@@ -146,7 +146,7 @@ def index():
         'index.html',
         empresa=empresa,
         erro=erro,
-        historico=historico
+        historico2=historico2
     )
 
     
