@@ -57,7 +57,10 @@ def index():
                     municipios.descricao AS municipio,
                     uf,
                     cep,
-                    cnaes.descricao AS cnae_fiscal_principal
+                    cnaes.descricao AS cnae_fiscal_principal,
+                    ddd1,
+                    telefone1,
+                    correio_eletronico
                 FROM estabelecimentos
                 
                 LEFT JOIN municipios
@@ -90,7 +93,10 @@ def index():
                     'municipio': pesquisa_cnpj[5],
                     'uf': pesquisa_cnpj[6],
                     'cep': pesquisa_cnpj[7],
-                    'cnae': pesquisa_cnpj[8]
+                    'cnae': pesquisa_cnpj[8],
+                    'ddd1': pesquisa_cnpj[9],
+                    'telefone1': pesquisa_cnpj[10],
+                    'correio_eletronico': pesquisa_cnpj[11]
                 }
 
                 insert_historico = """
